@@ -8,7 +8,7 @@ Most cold-email tools are built for sales volume. This one is for the opposite c
 
 You give two things: a **topic** (what you're working on and what you need) and a **direction** (what kind of person you want to ask). The `reach-out` skill does the rest and stops at "waiting for you to say send":
 
-1. **Pick people** from your candidate list.
+1. **Pick people** from your candidate list, or, if you name an organization, find the decision maker there first ([decision-makers.md](skills/reach-out/decision-makers.md)).
 2. **Verify against the original pages.** Every fact about the person that goes into the email (current role, past work, address) is checked on its source page. Anything that can't be checked stays out.
 3. **Screen out** people who shouldn't get an email, such as possible reviewers of your manuscript.
 4. **Pair a gift**: something you bring that's useful to their work, such as new information, an introduction or a result.
@@ -27,6 +27,10 @@ You give two things: a **topic** (what you're working on and what you need) and 
 7. **Delete test**: read the first sentence as the recipient; if you'd delete it, rewrite it.
 
 `check_draft.py` enforces the mechanical parts (length, exactly one question, banned openers and filler phrases, signature) for English and Chinese drafts.
+
+## Finding the decision maker
+
+When you name an organization but not a person, the skill picks titles by organization size, searches public profiles and recent papers, finds a contact address in a fixed order of preference, and checks that the person still holds the role and that your question fits their priorities. You approve a short candidate table before any drafting starts. Details: [decision-makers.md](skills/reach-out/decision-makers.md).
 
 ## Install
 
