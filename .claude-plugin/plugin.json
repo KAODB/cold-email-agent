@@ -1,0 +1,19 @@
+{
+  "name": "cold-email-agent",
+  "version": "0.1.0",
+  "description": "One-to-one cold emails that ask an expert for advice: finds the right person, verifies every fact against its source, checks the draft, and sends only after you approve.",
+  "author": {
+    "name": "KAODB",
+    "url": "https://github.com/KAODB"
+  },
+  "homepage": "https://github.com/KAODB/cold-email-agent",
+  "repository": "https://github.com/KAODB/cold-email-agent",
+  "license": "MIT",
+  "keywords": [
+    "cold-email",
+    "outreach",
+    "email",
+    "skills",
+    "claude-code"
+  ]
+}

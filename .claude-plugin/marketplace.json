@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "cold-email-agent",
+  "description": "A Claude Code skill for one-to-one cold emails that ask experts for advice.",
+  "owner": {
+    "name": "KAODB",
+    "url": "https://github.com/KAODB"
+  },
+  "plugins": [
+    {
+      "name": "cold-email-agent",
+      "description": "Finds the right person, verifies every fact against its source, checks the draft, and sends only after you approve.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
