@@ -66,7 +66,14 @@ Body skeleton (follow the structure, not the wording): something about them, wit
    Signature line 2 (title)
    ```
 
-7. **Machine check.** Save the draft to a scratch location and run `python3 "${CLAUDE_SKILL_DIR}/check_draft.py" <draft-file>` (`${CLAUDE_SKILL_DIR}` is the folder containing this SKILL.md; if it isn't substituted, replace it with the base directory shown when this skill loads). Fix every FAIL until it passes; use your judgment on WARNs.
+7. **Machine check.** Save the draft to a scratch location. If `check_draft.py` sits next to this SKILL.md, run `python3 "${CLAUDE_SKILL_DIR}/check_draft.py" <draft-file>` (`${CLAUDE_SKILL_DIR}` is the folder containing this SKILL.md; if it isn't substituted, replace it with the base directory shown when this skill loads). Fix every FAIL until it passes; use your judgment on WARNs. If the script isn't there (the directory edition ships without scripts), run the same checks with shell tools and show the results:
+   - **Header (FAIL)**: a `To:` line and a `Subject:` line.
+   - **Length (FAIL)**: the body, from the salutation to the `--` line, is at most 130 words in English (count with `wc -w`) or 250 characters in Chinese.
+   - **One question (FAIL)**: exactly one `?` or `？` in the body, not counting any inside a URL.
+   - **First sentence (FAIL)**: doesn't open with "I am" or "I'm", and contains none of "my name is", "hope you", "hope this", "I wanted to", "just wanted", "I am writing", "I'm writing", "reaching out", "introduce myself".
+   - **Anywhere in the body (FAIL)**: no self-introduction ("I'm a …", "my name is") and none of "pick your brain", "let me know", "did you get a chance", "following up", "checking in", "circling back", "looking forward to hearing", "any thoughts", "earliest convenience", "sorry to bother", "I know you're busy", "quick call", "quick chat", "quick question", "hop on a call". For a Chinese draft, apply the same rules to the Chinese equivalents.
+   - **Signature (FAIL)**: a `--` line followed by the name and the title.
+   - **Warnings (your judgment)**: a subject longer than 8 words, no link in the body, an em dash.
 8. **Get the user's confirmation.** For each email, give in the conversation: recipient and channel, the draft, a translation into the user's language (if the email is already in the user's language, the draft only), and a table of where each fact in the email comes from. The user can reply "send 1," "send 1, 3," or "edit 2: …".
 9. **Send.** Send only after the user explicitly says send for that version of that email; if even one word changes afterward, confirm again. How: see "Sending." Keep confirming one email at a time until at least about 20 have been sent; whether to switch to batch approval is for the user to bring up; don't suggest it.
 10. **Log.** After sending: save the final text to `letters/YYYY-MM-DD-surname.md` (recipient, channel, time sent, the text, its translation, source table); add a row to `log.md`; leave the person's row in the candidate list as is.

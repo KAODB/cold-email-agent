@@ -32,6 +32,14 @@ You give two things: a **topic** (what you're working on and what you need) and 
 
 When you name an organization but not a person, the skill picks titles by organization size, searches public profiles and recent papers, finds a contact address in a fixed order of preference, and checks that the person still holds the role and that your question fits their priorities. You approve a short candidate table before any drafting starts. Details: [decision-makers.md](skills/reach-out/decision-makers.md).
 
+## What it runs, sends and fetches
+
+- **Runs**: `check_draft.py`, a local Python script (standard library only) that reads the draft file you point it to. Nothing else is executed.
+- **Fetches**: public web pages, to verify facts about each person and, when you name an organization, to search public profiles and recent papers.
+- **Sends**: only the emails you approve one at a time, from your own signed-in webmail through a browser automation tool. LinkedIn notes are drafted only; you send them yourself.
+- **Reads**: your mailbox, read-only, and only when you ask it to check for replies from people in your log.
+- **Stores**: everything in a local folder, `$REACH_OUT_DIR` (default `~/reach-out/`): your candidate list, log and sent letters. The plugin has no server and collects no data.
+
 ## Install
 
 In Claude Code:
@@ -67,11 +75,19 @@ Requirements: Python 3 for `check_draft.py` (standard library only). Emails are 
 - People who decline or ask not to be contacted go on the do-not-contact list.
 - Rules on unsolicited email differ by country; check the recipient's before sending.
 
+## Directory edition
+
+`directory-edition/` is the same skill without `check_draft.py`, for the Claude plugin directory, which accepts scripts only from verified organizations. Without the script, the skill runs the same checks with shell tools. CI keeps the two copies of the skill identical.
+
 ## Self-test
 
 ```
 python3 skills/reach-out/check_draft.py --selftest
+diff skills/reach-out/SKILL.md directory-edition/skills/reach-out/SKILL.md
+diff skills/reach-out/decision-makers.md directory-edition/skills/reach-out/decision-makers.md
 ```
+
+CI runs the same checks on every push.
 
 ## License
 
